@@ -6,6 +6,7 @@ var recorder; 						//WebAudioRecorder object
 var input; 							//MediaStreamAudioSourceNode  we'll be recording
 var encodingType; 					//holds selected encoding for resulting audio (file)
 var encodeAfterRecord = true;       // when to encode
+var numRecordings = 0;
 
 // shim for AudioContext when it's not avb. 
 var AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -131,6 +132,8 @@ function stopRecording() {
 }
 
 function createDownloadLink(blob,encoding) {
+
+  numRecordings += 1
 	
 	var url = URL.createObjectURL(blob);
 	var au = document.createElement('audio');
@@ -143,7 +146,7 @@ function createDownloadLink(blob,encoding) {
 
 	//link the a element to the blob
 	link.href = url;
-	link.download = new Date().toISOString() + '.'+encoding;
+	link.download = 'Recording ' + numRecordings.toString() + '.' + encoding;
 	link.innerHTML = link.download;
 
 	//add the new audio and a elements to the li element
