@@ -61,7 +61,10 @@ function startRecording() {
 		
 		/* use the stream */
 		input = audioContext.createMediaStreamSource(stream);
-		
+
+    var meterNode = webAudioPeakMeter.createMeterNode(input, audioContext);
+
+    webAudioPeakMeter.createMeter(document.getElementById('levels'), meterNode, {})
 		//stop the input from playing back through the speakers
 		//input.connect(audioContext.destination)
 
