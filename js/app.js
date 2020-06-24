@@ -132,6 +132,8 @@ function stopRecording() {
 	//tell the recorder to finish the recording (stop recording + encode the recorded audio)
 	recorder.finishRecording();
 
+  document.getElementById('levels').innerHTML = '';
+
 	__log('Recording stopped');
 }
 
