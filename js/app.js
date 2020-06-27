@@ -102,7 +102,7 @@ function startRecording() {
 	    });
 
 		//start the recording process
-    player.playVideo();
+    //player.playVideo();
 		recorder.startRecording();
 
 		 __log("Recording started");
