@@ -47,8 +47,9 @@
 	<!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
 	<script src="js/WebAudioRecorder.min.js"></script>
   <script src="js/web-audio-peak-meter.min.js"></script>
+  <script src="js/localforage.min.js"></script>
 	<script src="js/app.js"></script>
-    <script>
+  <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -89,6 +90,32 @@
       function stopVideo() {
         player.stopVideo();
       }
+
+      window.addEventListener('DOMContentLoaded', function () {
+        localforage.iterate(function (v, k) {
+          createDownloadLink(v, 'wav');
+        });
+      });
+      document.addEventListener('click', function (event) {
+        var isDelete = event.target.className.indexOf('delete') > -1;
+        var isRecording = event.target.parentNode.className.indexOf('audio-recording') > -1;
+        var num;
+
+
+        if (isDelete && isRecording) {
+          num = event.target.parentNode.dataset.recordingNum;
+          localforage.removeItem('recording_'+num).then(onDelete).catch(console.log)
+        }
+
+
+        function onDelete() {
+          var num;
+          event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+
+
+
+        }
+      });
     </script>
 
 </body>

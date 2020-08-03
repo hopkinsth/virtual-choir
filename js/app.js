@@ -144,7 +144,19 @@ function createDownloadLink(blob,encoding) {
 	var url = URL.createObjectURL(blob);
 	var au = document.createElement('audio');
 	var li = document.createElement('li');
+  li.className = 'audio-recording';
+  li.dataset.recordingNum = numRecordings;
+
 	var link = document.createElement('a');
+
+  var del = document.createElement('a');
+  del.className = 'delete';
+  del.innerHTML = '(❌ Delete this one ❌)';
+
+
+  localforage.setItem('recording_'+numRecordings, blob).catch(function(err) {
+    console && console.log(err);
+  });
 
 	//add controls to the <audio> element
 	au.controls = true;
@@ -158,6 +170,7 @@ function createDownloadLink(blob,encoding) {
 	//add the new audio and a elements to the li element
 	li.appendChild(au);
 	li.appendChild(link);
+  li.appendChild(del);
 
 	//add the li element to the ordered list
 	recordingsList.appendChild(li);
