@@ -81,7 +81,7 @@ function startRecording() {
 
   options = Object.assign(options, {
     videoBitsPerSecond: 5000000,
-    audioBitsPerSecond: 256000,
+    audioBitsPerSecond: 320000,
   });
 
   try {
