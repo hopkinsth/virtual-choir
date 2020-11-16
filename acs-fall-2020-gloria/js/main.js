@@ -131,7 +131,7 @@ document.querySelector('button#start').addEventListener('click', async () => {
       autoGainControl: false
     },
     video: {
-      width: 1280, height: 720,
+      width: { ideal: 1280 }, height: { ideal: 720 } ,
     }
   };
   console.log('Using media constraints:', constraints);
