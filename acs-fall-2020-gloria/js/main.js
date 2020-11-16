@@ -79,6 +79,11 @@ function startRecording() {
     }
   }
 
+  options = Object.assign(options, {
+    videoBitsPerSecond: 5000000,
+    audioBitsPerSecond: 256000,
+  });
+
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
   } catch (e) {
