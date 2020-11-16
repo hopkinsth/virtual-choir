@@ -47,7 +47,7 @@ downloadButton.addEventListener('click', () => {
   const a = document.createElement('a');
   a.style.display = 'none';
   a.href = url;
-  a.download = 'test.webm';
+  a.download = 'ACS Gloria - ' + (new Date()).toString() + '.webm';
   document.body.appendChild(a);
   a.click();
   setTimeout(() => {
