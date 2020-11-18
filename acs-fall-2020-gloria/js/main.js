@@ -143,3 +143,40 @@ document.querySelector('button#start').addEventListener('click', async () => {
   await init(constraints);
 });
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  let video;
+
+  let params = new URLSearchParams(document.location.search);
+
+  switch (params.get('part')) {
+    case 'soprano1':
+      video = 'eXagT_8tmJE';
+      break;
+    case 'soprano2':
+      video = 'vKeNacU9Oqw';
+      break;
+    case 'alto1':
+      video = 'xqCZwWb-KWM';
+      break;
+    case 'alto2':
+      video = 'ASxb63jkOHA';
+      break;
+    case 'tenor1':
+      video = '7QBSEA-lJiE';
+      break;
+    case 'tenor2':
+      video = 'jKFvgSNDx6I';
+      break;
+    case 'bass1':
+      video = 'l0uI-YZ8gho';
+      break;
+    case 'bass2':
+      video = 'S0Jg_tK2eIc';
+      break;
+    default:
+      video = 'k-3F8F08aX4';
+  }
+
+  document.getElementById('follow-along').innerHTML = `<iframe width="500" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+});
